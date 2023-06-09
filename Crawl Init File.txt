@@ -4894,6 +4894,29 @@ msc ^= mute:is almost (dead|destroyed)
 # msc += boring:You feel mildly nauseous
 # msc += boring:Multicoloured lights dance around
 
+
+##
+## Minimap Color Scheme
+###############################################################################################
+tile_upstairs_col = #99ff33
+tile_downstairs_col = #ff1a1a
+tile_branchstairs_col = #ff1a1a
+tile_portal_col = #ff1a1a
+tile_door_col = #cb6d4d
+tile_wall_col = #595959
+tile_explore_horizon_col = #bfbfbf
+tile_floor_col = #262626
+tile_item_col = #262626
+tile_feature_col = #d4be21
+tile_plant_col = #5c8745
+tile_water_col = #0086b3
+tile_deep_water_col = #1f1fed
+tile_trap_col = #d24dff
+tile_transporter_col = #ff80bf
+tile_transporter_landing_col = #59ff89
+tile_lava_col = #6f0b00
+
+
 ##
 ## DEBUG.lua
 ################################################################################################
