@@ -93,7 +93,7 @@ travel_delay = 5
 show_travel_trail = true
 show_more = false
 default_manual_training = true
-#autofight_stop = 80
+autofight_stop = 80
 
 
 # display low HP warning when [X]% HP or below
