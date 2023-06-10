@@ -88,13 +88,13 @@
 # Quality of life #
 ###################
 explore_auto_rest = true
-explore_delay = 10
-travel_delay = 10
+explore_delay = 5
+travel_delay = 5
 show_travel_trail = true
 show_more = false
 default_manual_training = true
-autofight_stop = 80
-default_manual_training = true
+#autofight_stop = 80
+
 
 # display low HP warning when [X]% HP or below
 hp_warning = 25
