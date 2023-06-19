@@ -87,18 +87,46 @@
 ###################
 # Quality of life #
 ###################
+
+# Wait until your HP and MP are both at rest_wait_percent before moving
+rest_wait_percent = 100
 explore_auto_rest = true
+
 explore_delay = 5
 travel_delay = 5
 show_travel_trail = true
 show_more = false
 default_manual_training = true
-autofight_stop = 80
+autofight_stop = 75
+
+# auto explore stop defaults
+explore_stop  = stairs,shops,altars,portals,branches,runed_doors,runes
+explore_stop += artefacts,glowing_items,greedy_pickup_smart,greedy_visited_item_stack
 
 
 # display low HP warning when [X]% HP or below
 hp_warning = 25
-#
+
+
+#############
+# Interface #
+#############
+
+# hp and mp bar coloring
+view_delay = 300
+hp_colour = 100:lightgreen, 99:lightgray, 75:yellow, 50:lightred, 25:red
+mp_colour = 100:cyan, 99:lightgray, 75:yellow, 50:lightred, 25:red
+hp_warning = 50
+
+# Cannot target self with risky magic
+allow_self_target = no
+
+# Zot count status
+# If you spend the indicated number of turns in this branch without descending to
+# a new floor, Zot will find and consume you.
+# always_show_zot determines whether to show the "Zot" status light at all times
+# even when you've got plenty of time left. defaults to `false`
+always_show_zot = true
 
 
 ##########################################
