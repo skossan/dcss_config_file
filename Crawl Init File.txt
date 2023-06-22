@@ -146,6 +146,19 @@ end
 }
 #
 
+##########
+# Macros #
+##########
+macros += M \{-1012} \{9}o
+macros += M \{-1018} >
+macros += M \{-1016} <
+macros += M \{-1015} \{6}@\{-1010}
+macros += M z z?
+macros += M 1 zaf
+macros += M 2 zbf
+macros += M 3 zcf
+
+
 ########################
 # Minimap color scheme #
 ########################
