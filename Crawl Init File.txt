@@ -65,7 +65,7 @@ action_panel = /?!}
 
 # A percentage scale factor to apply to the action panel. This option is
 # automatically saved between games, and only available on Webtiles.
-action_panel_scale = 200
+action_panel_scale = 120
 
 # Font used for displaying quantities of items in the action panel.
 # The size option is automatically saved between games, and both are only
