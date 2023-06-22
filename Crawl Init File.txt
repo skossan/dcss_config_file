@@ -1,6 +1,7 @@
 <
   function ready()
     AnnounceDamage()
+    OpenSkills()
   end
 >
 
@@ -9,19 +10,112 @@
 # Quality of life #
 ###################
 
-# Wait until your HP and MP are both at rest_wait_percent before moving
+# When resting, if your HP or MP is below this percentage of being full, it will stop resting when this percent of maximum HP or MP is refilled. Resting after this point will still rest up to 100%.
 rest_wait_percent = 100
+
+# If true, auto-explore waits until your HP and MP are both at rest_wait_percent before moving. This is always disabled for Meteorans.
 explore_auto_rest = true
 
-explore_delay = -1
-travel_delay = -1
+# How long auto-explore waits after each move (milliseconds). Depends on
+# platform. In particular, setting travel_delay = -1 and
+# explore_delay = 20 means you will see the individual moves of
+# autoexplore, but not the individual moves of other forms of travel.
+# Setting to -1 means the auto-explore delay will be the same as
+# travel_delay.
+explore_delay = 1
+
+# How long travel waits after each move (milliseconds), and also
+# how long auto-explore waits after each move unless explore_delay
+# is set. Depends on platform. Setting to -1 will jump to end of
+# travel - you will not see the individual moves.
+travel_delay = 1
+
+# When set to true, the path taken during autoexplore or travel
+# will be highlighted. The console colour and glyph of the travel trail
+# can be further configured using the feature option to override the
+# "travel trail" feature. If a travel trail is currently being displayed,
+# the Clear Map command (Ctrl-C) clears the trail instead of the map
+# (pressing it a second time then clears the map as usual).
 show_travel_trail = true
+
+# Setting this option to false will cause the game not to prompt
+# if more than a window-full of messages are output at once. This
+# option has no effect if clear_messages is set. Additionally, it
+# has no effect on whether force_more_message triggers.
 show_more = false
+
+# Allows auto removal of armour and jewellery when dropping it.
+easy_unequip = true
+
+# Whether to show or hide the action panel. This option is automatically
+# saved between games, and is only available on Webtiles.
+action_panel_show = true
+
+# The above is the default list of items to show on the action panel.
+# The valid symbols are
+# ?       Scrolls
+# !       Potions
+# }       Misc. items
+# /       Wands
+# If set to an empty string, the panel will be hidden entirely. The order
+# of item types in this option determines the order of item types in the
+# action panel; sub-order is determined by inventory letter. This option
+# is only available on Webtiles.
+action_panel = /?!}
+
+# A percentage scale factor to apply to the action panel. This option is
+# automatically saved between games, and only available on Webtiles.
+action_panel_scale = 200
+
+# Font used for displaying quantities of items in the action panel.
+# The size option is automatically saved between games, and both are only
+# available on Webtiles.
+action_panel_font_size = 20
+
+# If set to true, a character dump will automatically be created or
+# updated when the game is saved.
+dump_on_save = true
+
+# When enabled, the mouse_input option allows the game to use
+# mouse input events on certain platforms (Windows and Unix).
+mouse_input = true
+
+# When set to true, new characters will start with skill training
+# set to manual mode instead of automatic mode. This will also set the
+# [!] selection on the skill (m) menu to "cost" by default, instead of
+# "training".
 default_manual_training = true
+
+# When set to true, this option replaces the noise bar with an
+# "equipment bar" showing the glyphs of all currently equipped items,
+# with gaps for available but currently unfilled equipment slots.
+equip_bar = true
+
+# When set to true, any items displayed in the equipment bar that have a
+# variable colour will be animated.
+animate_equip_bar = true
+
+# Autofight will not act if your HP is at or lower than this
+# percentage of your max HP. Disabled when set to 0. This setting applies
+# both to autofight and to autofire.
 autofight_stop = 30
+
+# Ask for confirmation before using bad or dangerous scrolls and potions.
+bad_item_prompt = true
+
+# Ask for confirmation before using a one-way escape hatch or shaft.
+warn_hatches = true
+
+# When sort_menus = false (the default), items are not sorted, and
+# will be ordered by inventory letter (or in the order they're
+# stacked for items on the floor).
+
+# When sort_menus = true, items are sorted according to the specified
+# sort_order, with the default being:
+# equipped, basename, qualname, curse, qty
 sort_menus = true
 
-# auto explore stop defaults
+# Explore will stop for one of these conditions. Whatever you set this option to, anything that stops travel will also stop explore.
 explore_stop  = stairs,shops,altars,portals,branches,runed_doors,runes
 explore_stop += artefacts,glowing_items,greedy_pickup_smart,greedy_visited_item_stack
 
@@ -52,24 +146,6 @@ always_show_zot = true
 
 # Zooms the game in a bit
 tile_viewport_scale = 2.0
-
-
-##########################################
-# Open skill menu at the start of a game #
-##########################################
-{
-
-local open_skill_menu = true
-function ready()
-  if you.turns() == 0 and open_skill_menu then
-    open_skill_menu = false
-    crawl.sendkeys("m")
-    crawl.sendkeys("!")
-    crawl.sendkeys("!")
-  end
-end
-}
-#
 
 ##########
 # Macros #
@@ -335,6 +411,19 @@ menu += $danger:deck of destruction
 # Functions below
 # -----------------------------
 
+
+####################
+# Opens skill menu #
+####################
+{
+  local need_skills_opened = true
+  function OpenSkills()
+    if you.turns() == 0 and need_skills_opened then
+      need_skills_opened = false
+      crawl.sendkeys("m")
+    end
+  end
+}
 
 ###############
 # Damage Calc #
