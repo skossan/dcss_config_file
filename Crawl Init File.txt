@@ -86,15 +86,6 @@ mouse_input = true
 # "training".
 default_manual_training = true
 
-# When set to true, this option replaces the noise bar with an
-# "equipment bar" showing the glyphs of all currently equipped items,
-# with gaps for available but currently unfilled equipment slots.
-equip_bar = true
-
-# When set to true, any items displayed in the equipment bar that have a
-# variable colour will be animated.
-animate_equip_bar = true
-
 # Autofight will not act if your HP is at or lower than this
 # percentage of your max HP. Disabled when set to 0. This setting applies
 # both to autofight and to autofire.
