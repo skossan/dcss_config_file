@@ -22,13 +22,13 @@ explore_auto_rest = true
 # autoexplore, but not the individual moves of other forms of travel.
 # Setting to -1 means the auto-explore delay will be the same as
 # travel_delay.
-explore_delay = 1
+explore_delay = -1
 
 # How long travel waits after each move (milliseconds), and also
 # how long auto-explore waits after each move unless explore_delay
 # is set. Depends on platform. Setting to -1 will jump to end of
 # travel - you will not see the individual moves.
-travel_delay = 1
+travel_delay = -1
 
 # When set to true, the path taken during autoexplore or travel
 # will be highlighted. The console colour and glyph of the travel trail
