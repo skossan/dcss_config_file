@@ -141,7 +141,7 @@ tile_viewport_scale = 2.0
 ##########
 # Macros #
 ##########
-macros += M \{-1012} \{9}o
+macros += M \{-1012} ===autoplay
 macros += M \{-1018} >
 macros += M \{-1016} <
 macros += M \{-1015} \{6}@\{-1010}
@@ -402,6 +402,19 @@ menu += $danger:deck of destruction
 # Functions below
 # -----------------------------
 
+
+##################################################################
+# Press "tab" when enemies are visible and "o" when they are not #
+##################################################################
+{
+function autoplay()
+    if you.feel_safe() then
+        crawl.sendkeys("o")
+    else
+        crawl.sendkeys({9})
+    end
+end
+}
 
 ####################
 # Opens skill menu #
